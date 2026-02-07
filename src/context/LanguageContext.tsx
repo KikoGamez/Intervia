@@ -58,6 +58,21 @@ const translations: Record<Language, Translations> = {
     dataStat2: 'Datos recogidos',
     dataStat2Value: '1M+',
 
+    // Studies Market Research
+    smrBadge: 'B2B MARKET RESEARCH',
+    smrTitle: 'Estudios de mercado',
+    smrTitleHighlight: 'conversacionales e inteligentes',
+    smrDesc: 'Olvídate de encuestas tradicionales costosas y lentas. Nuestra IA conduce conversaciones naturales que extraen datos cuantitativos (NPS, ratings) y cualitativos (sentiment, pain points) con profundidad adaptativa.',
+    smrBenefit1: 'Feedback 5x más profundo y riguroso con patrones objetivos',
+    smrBenefit2: 'Resultados en 3-5 días vs 3-4 semanas',
+    smrBenefit3: 'Coste por respuesta <50% vs tradicional',
+    smrBenefit4: 'Multicanal: WhatsApp, voz, SMS, web',
+    smrCta: 'Solicitar demo',
+    smrStat1: 'Resultado',
+    smrStat1Value: '3-5 días',
+    smrStat2: 'Coste por respuesta',
+    smrStat2Value: '<50%',
+
     // Market Research
     mrBadge: 'GESTORÍAS Y ASESORÍAS',
     mrTitle: 'Formularios oficiales',
@@ -243,6 +258,21 @@ const translations: Record<Language, Translations> = {
     dataStat1Value: '+340%',
     dataStat2: 'Data collected',
     dataStat2Value: '1M+',
+
+    // Studies Market Research
+    smrBadge: 'B2B MARKET RESEARCH',
+    smrTitle: 'Market research',
+    smrTitleHighlight: 'conversational & intelligent',
+    smrDesc: 'Forget expensive and slow traditional surveys. Our AI drives natural conversations that extract quantitative data (NPS, ratings) and qualitative insights (sentiment, pain points) with adaptive depth.',
+    smrBenefit1: '5x deeper and more rigorous feedback with objective patterns',
+    smrBenefit2: 'Results in 3-5 days vs 3-4 weeks',
+    smrBenefit3: 'Cost per response <50% vs traditional',
+    smrBenefit4: 'Multichannel: WhatsApp, voice, SMS, web',
+    smrCta: 'Request demo',
+    smrStat1: 'Results',
+    smrStat1Value: '3-5 days',
+    smrStat2: 'Cost per response',
+    smrStat2Value: '<50%',
 
     // Market Research
     mrBadge: 'TAX AGENCIES & ADVISORS',

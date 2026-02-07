@@ -5,6 +5,7 @@ import Hero from './sections/Hero';
 import LogoMarquee from './sections/LogoMarquee';
 import Features from './sections/Features';
 import DataCollection from './sections/DataCollection';
+import StudiesMarketResearch from './sections/StudiesMarketResearch';
 import MarketResearch from './sections/MarketResearch';
 import Automations from './sections/Automations';
 import Integrations from './sections/Integrations';
@@ -31,6 +32,7 @@ function App() {
         <LogoMarquee />
         <Features />
         <DataCollection />
+        <StudiesMarketResearch />
         <MarketResearch />
         <Automations />
         <Integrations />
