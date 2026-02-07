@@ -5,13 +5,15 @@ import { useLanguage } from '@/context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const base = import.meta.env.BASE_URL;
+
 const logos = [
-  { name: 'TechFlow', src: '/logo-1.png' },
-  { name: 'DataSphere', src: '/logo-2.png' },
-  { name: 'CloudPeak', src: '/logo-3.png' },
-  { name: 'NovaLabs', src: '/logo-4.png' },
-  { name: 'PulseAI', src: '/logo-5.png' },
-  { name: 'Vertex', src: '/logo-6.png' },
+  { name: 'TechFlow', src: `${base}logo-1.png` },
+  { name: 'DataSphere', src: `${base}logo-2.png` },
+  { name: 'CloudPeak', src: `${base}logo-3.png` },
+  { name: 'NovaLabs', src: `${base}logo-4.png` },
+  { name: 'PulseAI', src: `${base}logo-5.png` },
+  { name: 'Vertex', src: `${base}logo-6.png` },
 ];
 
 export default function LogoMarquee() {

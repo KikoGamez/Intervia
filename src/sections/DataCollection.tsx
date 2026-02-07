@@ -77,7 +77,7 @@ export default function DataCollection() {
             
             <div className="relative transform-gpu" style={{ transformStyle: 'preserve-3d' }}>
               <img
-                src="/data-collection.jpg"
+                src={`${import.meta.env.BASE_URL}data-collection.jpg`}
                 alt="Data Collection"
                 className="w-full max-w-md rounded-3xl shadow-2xl"
               />

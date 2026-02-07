@@ -7,13 +7,15 @@ import { useLanguage } from '@/context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const base = import.meta.env.BASE_URL;
+
 const integrations = [
-  { name: 'Slack', icon: '/icon-1.png', color: '#4A154B' },
-  { name: 'Google Drive', icon: '/icon-2.png', color: '#4285F4' },
-  { name: 'Zapier', icon: '/icon-3.png', color: '#FF4A00' },
-  { name: 'Salesforce', icon: '/icon-4.png', color: '#00A1E0' },
-  { name: 'HubSpot', icon: '/icon-5.png', color: '#FF7A59' },
-  { name: 'Notion', icon: '/icon-6.png', color: '#000000' },
+  { name: 'Slack', icon: `${base}icon-1.png`, color: '#4A154B' },
+  { name: 'Google Drive', icon: `${base}icon-2.png`, color: '#4285F4' },
+  { name: 'Zapier', icon: `${base}icon-3.png`, color: '#FF4A00' },
+  { name: 'Salesforce', icon: `${base}icon-4.png`, color: '#00A1E0' },
+  { name: 'HubSpot', icon: `${base}icon-5.png`, color: '#FF7A59' },
+  { name: 'Notion', icon: `${base}icon-6.png`, color: '#000000' },
 ];
 
 export default function Integrations() {

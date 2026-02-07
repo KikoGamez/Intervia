@@ -121,7 +121,7 @@ export default function Automations() {
             
             <div className="relative">
               <img
-                src="/voice-forms.jpg"
+                src={`${import.meta.env.BASE_URL}voice-forms.jpg`}
                 alt="Voice Forms"
                 className="w-full max-w-lg rounded-3xl shadow-2xl"
               />
