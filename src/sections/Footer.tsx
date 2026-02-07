@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-6">
               <img 
-                src="/intervia-logo.png" 
+                src={`${import.meta.env.BASE_URL}intervia-logo.png`}
                 alt="intervia.ai" 
                 className="h-10 w-auto"
               />

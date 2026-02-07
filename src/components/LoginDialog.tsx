@@ -92,7 +92,7 @@ export default function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
       <DialogContent className="sm:max-w-[420px] p-0 gap-0 border-none bg-white rounded-2xl overflow-hidden shadow-2xl">
         {/* Header */}
         <div className="bg-gradient-to-br from-[#7350ff] to-[#5a3fd4] px-8 pt-8 pb-6 text-center">
-          <img src="/intervia-logo.png" alt="intervia.ai" className="h-[120px] mx-auto brightness-0 invert" />
+          <img src={`${import.meta.env.BASE_URL}intervia-logo.png`} alt="intervia.ai" className="h-[120px] mx-auto brightness-0 invert" />
         </div>
 
         <div className="px-8 py-6 space-y-5">

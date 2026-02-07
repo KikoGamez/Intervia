@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/intervia/',
+  base: '/Intervia/',
   // other configurations remain unchanged
 })

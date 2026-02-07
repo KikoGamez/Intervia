@@ -164,7 +164,7 @@ export default function Integrations() {
               className="relative w-24 h-24 bg-white rounded-3xl shadow-2xl flex items-center justify-center z-10 border-2 border-[#7350ff]/20"
             >
               <img 
-                src="/intervia-logo.png" 
+                src={`${import.meta.env.BASE_URL}intervia-logo.png`}
                 alt="intervia.ai" 
                 className="w-16 h-16 object-contain"
               />

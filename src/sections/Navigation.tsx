@@ -42,7 +42,7 @@ export default function Navigation() {
           {/* Logo - Bigger */}
           <a href="#" className="flex items-center gap-3 group">
             <img 
-              src="intervia-logo.png" 
+              src={`${import.meta.env.BASE_URL}intervia-logo.png`}
               alt="intervia.ai" 
               className="h-[120px] w-auto transform group-hover:scale-105 transition-transform duration-300"
             />
