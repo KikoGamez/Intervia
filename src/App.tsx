@@ -7,7 +7,7 @@ import Features from './sections/Features';
 import DataCollection from './sections/DataCollection';
 import StudiesMarketResearch from './sections/StudiesMarketResearch';
 import MarketResearch from './sections/MarketResearch';
-import Automations from './sections/Automations';
+
 import Integrations from './sections/Integrations';
 import Stats from './sections/Stats';
 import Pricing from './sections/Pricing';
@@ -34,7 +34,6 @@ function App() {
         <DataCollection />
         <StudiesMarketResearch />
         <MarketResearch />
-        <Automations />
         <Integrations />
         <Stats />
         <Pricing />
