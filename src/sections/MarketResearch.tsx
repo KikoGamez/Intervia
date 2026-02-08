@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function GestoriaIllustration() {
   return (
-    <svg viewBox="0 0 480 420" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-md">
+    <svg viewBox="0 0 480 440" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-md">
       <defs>
         <linearGradient id="mrPurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#7350ff" stopOpacity="0.15" />
@@ -24,116 +24,190 @@ function GestoriaIllustration() {
         </filter>
       </defs>
 
-      {/* Official document */}
-      <rect x="200" y="20" width="260" height="340" rx="12" fill="white" stroke="#e5e7eb" strokeWidth="1.5" filter="url(#mrShadow)" />
-      {/* Document header bar */}
-      <rect x="200" y="20" width="260" height="44" rx="12" fill="url(#mrPurpleGrad)" />
-      <rect x="200" y="48" width="260" height="16" fill="url(#mrPurpleGrad)" />
-      {/* Header coat of arms placeholder */}
-      <circle cx="330" cy="42" r="12" fill="#7350ff" opacity="0.15" stroke="#7350ff" strokeWidth="1" />
-      <text x="330" y="46" textAnchor="middle" fill="#7350ff" fontSize="10" fontWeight="bold">ES</text>
-      {/* Document title */}
-      <rect x="280" y="56" width="100" height="6" rx="3" fill="#7350ff" opacity="0.25" />
+      {/* === OFFICIAL FORM DOCUMENT === */}
+      <rect x="185" y="10" width="280" height="400" rx="4" fill="white" stroke="#c9ccd1" strokeWidth="1" filter="url(#mrShadow)" />
 
-      {/* Form field 1 - NIF (filled) */}
-      <text x="220" y="88" fill="#6b7280" fontSize="9" fontWeight="500">NIF / CIF</text>
-      <rect x="220" y="92" width="220" height="26" rx="6" fill="#f0ecff" stroke="#7350ff" strokeWidth="1" />
-      <text x="232" y="109" fill="#374151" fontSize="10">B-12345678</text>
-      <circle cx="428" cy="105" r="7" fill="#6bcb77" opacity="0.2" />
-      <text x="428" y="108" textAnchor="middle" fontSize="8" fill="#16a34a">✓</text>
+      {/* Top institutional band */}
+      <rect x="185" y="10" width="280" height="4" rx="2" fill="url(#mrPurpleSolid)" />
 
-      {/* Form field 2 - Name (filling animation) */}
-      <text x="220" y="134" fill="#6b7280" fontSize="9" fontWeight="500">Denominación social</text>
-      <rect x="220" y="138" width="220" height="26" rx="6" fill="white" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="0" />
-      <text x="232" y="155" fill="#374151" fontSize="10">Empresa Demo S.L.</text>
+      {/* Header: escudo + Agencia Tributaria style */}
+      <rect x="197" y="22" width="256" height="42" fill="white" />
+      {/* Shield / coat of arms */}
+      <rect x="204" y="26" width="28" height="34" rx="3" fill="#7350ff" opacity="0.08" stroke="#7350ff" strokeWidth="0.8" />
+      <path d="M218 30 L218 40 Q218 50 210 52 Q225 50 218 40 Z" fill="#7350ff" opacity="0.15" />
+      <circle cx="218" cy="38" r="4" fill="#7350ff" opacity="0.2" />
+      <text x="218" y="55" textAnchor="middle" fill="#7350ff" fontSize="4" fontWeight="bold">GOB</text>
+      {/* Agency name */}
+      <text x="242" y="35" fill="#4b5563" fontSize="6" fontWeight="500">Agencia Tributaria</text>
+      <text x="242" y="44" fill="#7350ff" fontSize="9" fontWeight="bold">MODELO 036</text>
+      <text x="242" y="53" fill="#6b7280" fontSize="5.5">Declaración censal de alta, modificación y baja</text>
+      {/* Model number box */}
+      <rect x="415" y="26" width="38" height="34" rx="3" fill="#7350ff" opacity="0.06" stroke="#7350ff" strokeWidth="0.8" />
+      <text x="434" y="41" textAnchor="middle" fill="#7350ff" fontSize="14" fontWeight="bold">036</text>
+      <text x="434" y="53" textAnchor="middle" fill="#6b7280" fontSize="5">Pág. 1</text>
+
+      {/* Divider line */}
+      <line x1="197" y1="68" x2="453" y2="68" stroke="#d1d5db" strokeWidth="0.5" />
+
+      {/* === SECTION 1: Datos identificativos === */}
+      <rect x="197" y="72" width="256" height="14" rx="2" fill="#7350ff" opacity="0.06" />
+      <text x="203" y="82" fill="#7350ff" fontSize="7" fontWeight="bold">1</text>
+      <text x="214" y="82" fill="#4b5563" fontSize="6.5" fontWeight="600">DATOS IDENTIFICATIVOS</text>
+
+      {/* NIF row - FILLED with grid cells */}
+      <text x="200" y="98" fill="#6b7280" fontSize="5.5">NIF</text>
+      <g>
+        {[0,1,2,3,4,5,6,7,8].map((i) => (
+          <rect key={`nif-${i}`} x={225 + i * 18} y={90} width="16" height="16" rx="1.5" fill={i < 9 ? '#f0ecff' : 'white'} stroke="#7350ff" strokeWidth="0.6" />
+        ))}
+        {'B12345678'.split('').map((ch, i) => (
+          <text key={`nifv-${i}`} x={233 + i * 18} y={102} textAnchor="middle" fill="#374151" fontSize="9" fontFamily="monospace">{ch}</text>
+        ))}
+      </g>
+      <circle cx="400" cy="98" r="6" fill="#6bcb77" opacity="0.15" />
+      <text x="400" y="101" textAnchor="middle" fontSize="7" fill="#16a34a">✓</text>
+
+      {/* Denominación social row - FILLING */}
+      <text x="200" y="124" fill="#6b7280" fontSize="5.5">Apellidos y nombre o razón social</text>
+      <rect x="200" y="127" width="250" height="16" rx="1.5" fill="white" stroke="#7350ff" strokeWidth="0.8" />
+      <text x="206" y="138" fill="#374151" fontSize="8">Empresa Demo S.L.</text>
       {/* Typing cursor */}
-      <rect x="338" y="144" width="2" height="14" rx="1" fill="#7350ff">
+      <rect x="290" y="130" width="1.5" height="11" rx="0.75" fill="#7350ff">
         <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
       </rect>
 
-      {/* Form field 3 - Activity (empty, about to fill) */}
-      <text x="220" y="180" fill="#6b7280" fontSize="9" fontWeight="500">Actividad económica (IAE)</text>
-      <rect x="220" y="184" width="220" height="26" rx="6" fill="white" stroke="#e5e7eb" strokeWidth="1" />
-      <rect x="232" y="194" width="80" height="6" rx="3" fill="#e5e7eb" />
+      {/* Divider */}
+      <line x1="197" y1="150" x2="453" y2="150" stroke="#d1d5db" strokeWidth="0.5" />
 
-      {/* Form field 4 - Address */}
-      <text x="220" y="226" fill="#6b7280" fontSize="9" fontWeight="500">Domicilio fiscal</text>
-      <rect x="220" y="230" width="220" height="26" rx="6" fill="white" stroke="#e5e7eb" strokeWidth="1" />
-      <rect x="232" y="240" width="120" height="6" rx="3" fill="#e5e7eb" />
+      {/* === SECTION 2: Actividad === */}
+      <rect x="197" y="154" width="256" height="14" rx="2" fill="#7350ff" opacity="0.06" />
+      <text x="203" y="164" fill="#7350ff" fontSize="7" fontWeight="bold">2</text>
+      <text x="214" y="164" fill="#4b5563" fontSize="6.5" fontWeight="600">ACTIVIDAD ECONÓMICA</text>
 
-      {/* Form model label */}
-      <rect x="355" y="272" width="90" height="24" rx="8" fill="#7350ff" opacity="0.1" />
-      <text x="400" y="288" textAnchor="middle" fill="#7350ff" fontSize="10" fontWeight="bold">Modelo 036</text>
+      {/* IAE row - empty, placeholder */}
+      <text x="200" y="181" fill="#6b7280" fontSize="5.5">Epígrafe I.A.E.</text>
+      <g>
+        {[0,1,2,3].map((i) => (
+          <rect key={`iae-${i}`} x={272 + i * 18} y={173} width="16" height="16" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+        ))}
+      </g>
+      <rect x="206" y="193" width="180" height="5" rx="2.5" fill="#e5e7eb" />
 
-      {/* Progress bar */}
-      <text x="220" y="318" fill="#6b7280" fontSize="9">Completado</text>
-      <rect x="280" y="310" width="140" height="8" rx="4" fill="#e5e7eb" />
-      <rect x="280" y="310" width="84" height="8" rx="4" fill="url(#mrPurpleSolid)">
-        <animate attributeName="width" values="50;84;50" dur="4s" repeatCount="indefinite" />
+      {/* Divider */}
+      <line x1="197" y1="206" x2="453" y2="206" stroke="#d1d5db" strokeWidth="0.5" />
+
+      {/* === SECTION 3: Domicilio === */}
+      <rect x="197" y="210" width="256" height="14" rx="2" fill="#7350ff" opacity="0.06" />
+      <text x="203" y="220" fill="#7350ff" fontSize="7" fontWeight="bold">3</text>
+      <text x="214" y="220" fill="#4b5563" fontSize="6.5" fontWeight="600">DOMICILIO FISCAL</text>
+
+      {/* Address fields - empty */}
+      <text x="200" y="237" fill="#6b7280" fontSize="5.5">Tipo vía</text>
+      <rect x="232" y="229" width="50" height="14" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+      <text x="290" y="237" fill="#6b7280" fontSize="5.5">Nombre vía</text>
+      <rect x="322" y="229" width="128" height="14" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+
+      <text x="200" y="256" fill="#6b7280" fontSize="5.5">Núm.</text>
+      <rect x="220" y="248" width="30" height="14" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+      <text x="258" y="256" fill="#6b7280" fontSize="5.5">Piso</text>
+      <rect x="274" y="248" width="24" height="14" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+      <text x="306" y="256" fill="#6b7280" fontSize="5.5">C.P.</text>
+      <g>
+        {[0,1,2,3,4].map((i) => (
+          <rect key={`cp-${i}`} x={322 + i * 16} y={248} width="14" height="14" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+        ))}
+      </g>
+
+      {/* Checkbox row at bottom */}
+      <rect x="197" y="272" width="256" height="14" rx="2" fill="#7350ff" opacity="0.06" />
+      <text x="203" y="282" fill="#7350ff" fontSize="7" fontWeight="bold">4</text>
+      <text x="214" y="282" fill="#4b5563" fontSize="6.5" fontWeight="600">OBLIGACIONES FISCALES</text>
+
+      {/* Checkboxes */}
+      <rect x="206" y="290" width="10" height="10" rx="1.5" fill="#f0ecff" stroke="#7350ff" strokeWidth="0.6" />
+      <text x="211" y="298" textAnchor="middle" fill="#7350ff" fontSize="8">✓</text>
+      <text x="222" y="298" fill="#374151" fontSize="5.5">IVA — Régimen general</text>
+
+      <rect x="206" y="305" width="10" height="10" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+      <text x="222" y="313" fill="#6b7280" fontSize="5.5">IRPF — Estimación directa</text>
+
+      <rect x="206" y="320" width="10" height="10" rx="1.5" fill="white" stroke="#d1d5db" strokeWidth="0.6" />
+      <text x="222" y="328" fill="#6b7280" fontSize="5.5">Retenciones e ingresos a cuenta</text>
+
+      {/* Bottom page info */}
+      <line x1="197" y1="340" x2="453" y2="340" stroke="#d1d5db" strokeWidth="0.5" />
+      <text x="325" y="352" textAnchor="middle" fill="#9ca3af" fontSize="5">Modelo 036 — Agencia Estatal de Administración Tributaria</text>
+
+      {/* Progress bar overlay */}
+      <rect x="200" y="362" width="80" height="18" rx="9" fill="#7350ff" opacity="0.08" />
+      <text x="210" y="374" fill="#6b7280" fontSize="6">Completado</text>
+      <rect x="286" y="367" width="120" height="7" rx="3.5" fill="#e5e7eb" />
+      <rect x="286" y="367" width="72" height="7" rx="3.5" fill="url(#mrPurpleSolid)">
+        <animate attributeName="width" values="40;72;40" dur="4s" repeatCount="indefinite" />
       </rect>
-      <text x="426" y="318" fill="#7350ff" fontSize="9" fontWeight="bold">60%</text>
+      <text x="414" y="374" fill="#7350ff" fontSize="7" fontWeight="bold">60%</text>
 
-      {/* AI Chat bubbles - left side */}
+      {/* === AI CHAT BUBBLES — left side === */}
       {/* AI greeting */}
-      <rect x="10" y="50" width="160" height="46" rx="14" fill="#7350ff" filter="url(#mrShadow)" />
-      <circle cx="34" cy="73" r="13" fill="white" fillOpacity="0.2" />
-      <text x="34" y="77" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">AI</text>
-      <rect x="56" y="63" width="98" height="7" rx="3.5" fill="white" fillOpacity="0.4" />
-      <rect x="56" y="76" width="70" height="7" rx="3.5" fill="white" fillOpacity="0.3" />
+      <rect x="5" y="40" width="152" height="44" rx="14" fill="#7350ff" filter="url(#mrShadow)" />
+      <circle cx="28" cy="62" r="12" fill="white" fillOpacity="0.2" />
+      <text x="28" y="66" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold">AI</text>
+      <rect x="48" y="53" width="94" height="6.5" rx="3" fill="white" fillOpacity="0.4" />
+      <rect x="48" y="65" width="66" height="6.5" rx="3" fill="white" fillOpacity="0.3" />
 
       {/* User response */}
-      <rect x="20" y="112" width="155" height="42" rx="14" fill="white" stroke="#e5e7eb" strokeWidth="1.5" filter="url(#mrShadow)" />
-      <circle cx="44" cy="133" r="13" fill="url(#mrPurpleGrad)" stroke="#7350ff" strokeWidth="1.5" />
-      <text x="44" y="137" textAnchor="middle" fill="#7350ff" fontSize="10" fontWeight="bold">U</text>
-      <rect x="66" y="124" width="92" height="7" rx="3.5" fill="#e5e7eb" />
-      <rect x="66" y="137" width="60" height="7" rx="3.5" fill="#e5e7eb" />
+      <rect x="14" y="100" width="148" height="40" rx="14" fill="white" stroke="#e5e7eb" strokeWidth="1.5" filter="url(#mrShadow)" />
+      <circle cx="36" cy="120" r="12" fill="url(#mrPurpleGrad)" stroke="#7350ff" strokeWidth="1.5" />
+      <text x="36" y="124" textAnchor="middle" fill="#7350ff" fontSize="9" fontWeight="bold">U</text>
+      <rect x="56" y="112" width="88" height="6.5" rx="3" fill="#e5e7eb" />
+      <rect x="56" y="124" width="56" height="6.5" rx="3" fill="#e5e7eb" />
 
       {/* AI follow-up */}
-      <rect x="10" y="170" width="160" height="42" rx="14" fill="#7350ff" filter="url(#mrShadow)" />
-      <circle cx="34" cy="191" r="13" fill="white" fillOpacity="0.2" />
-      <text x="34" y="195" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">AI</text>
-      <rect x="56" y="182" width="98" height="7" rx="3.5" fill="white" fillOpacity="0.4" />
-      <rect x="56" y="195" width="80" height="7" rx="3.5" fill="white" fillOpacity="0.3" />
+      <rect x="5" y="156" width="152" height="40" rx="14" fill="#7350ff" filter="url(#mrShadow)" />
+      <circle cx="28" cy="176" r="12" fill="white" fillOpacity="0.2" />
+      <text x="28" y="180" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold">AI</text>
+      <rect x="48" y="168" width="94" height="6.5" rx="3" fill="white" fillOpacity="0.4" />
+      <rect x="48" y="180" width="76" height="6.5" rx="3" fill="white" fillOpacity="0.3" />
 
       {/* User response 2 */}
-      <rect x="20" y="228" width="155" height="42" rx="14" fill="white" stroke="#e5e7eb" strokeWidth="1.5" filter="url(#mrShadow)" />
-      <circle cx="44" cy="249" r="13" fill="url(#mrPurpleGrad)" stroke="#7350ff" strokeWidth="1.5" />
-      <text x="44" y="253" textAnchor="middle" fill="#7350ff" fontSize="10" fontWeight="bold">U</text>
-      <rect x="66" y="240" width="80" height="7" rx="3.5" fill="#e5e7eb" />
-      <rect x="66" y="253" width="55" height="7" rx="3.5" fill="#e5e7eb" />
+      <rect x="14" y="212" width="148" height="40" rx="14" fill="white" stroke="#e5e7eb" strokeWidth="1.5" filter="url(#mrShadow)" />
+      <circle cx="36" cy="232" r="12" fill="url(#mrPurpleGrad)" stroke="#7350ff" strokeWidth="1.5" />
+      <text x="36" y="236" textAnchor="middle" fill="#7350ff" fontSize="9" fontWeight="bold">U</text>
+      <rect x="56" y="224" width="76" height="6.5" rx="3" fill="#e5e7eb" />
+      <rect x="56" y="236" width="50" height="6.5" rx="3" fill="#e5e7eb" />
 
-      {/* Connection arrows from chat to form fields */}
-      <path d="M170 73 Q185 73 190 80 Q195 88 205 95" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.35" fill="none" />
-      <path d="M175 133 Q190 133 195 138 Q200 143 210 148" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.35" fill="none" />
-      <path d="M170 191 Q185 191 193 193 Q200 196 210 198" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.35" fill="none" />
-      <path d="M175 249 Q190 249 195 245 Q200 241 210 238" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.35" fill="none" />
+      {/* === CONNECTION LINES from chat to form === */}
+      <path d="M157 62 Q170 62 175 72 Q180 82 192 88" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3" fill="none" />
+      <path d="M162 120 Q174 120 178 126 Q182 132 192 134" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3" fill="none" />
+      <path d="M157 176 Q170 176 176 180 Q182 184 192 186" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3" fill="none" />
+      <path d="M162 232 Q174 232 178 230 Q184 226 192 222" stroke="#7350ff" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3" fill="none" />
 
       {/* Animated data flow dots */}
-      <circle cx="188" cy="78" r="2.5" fill="#7350ff" opacity="0.5">
+      <circle cx="174" cy="70" r="2.5" fill="#7350ff" opacity="0.5">
         <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite" />
       </circle>
-      <circle cx="192" cy="138" r="2.5" fill="#7350ff" opacity="0.5">
+      <circle cx="178" cy="128" r="2.5" fill="#7350ff" opacity="0.5">
         <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" begin="0.5s" repeatCount="indefinite" />
       </circle>
-      <circle cx="190" cy="195" r="2.5" fill="#7350ff" opacity="0.5">
+      <circle cx="176" cy="182" r="2.5" fill="#7350ff" opacity="0.5">
         <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" begin="1s" repeatCount="indefinite" />
       </circle>
-      <circle cx="192" cy="243" r="2.5" fill="#7350ff" opacity="0.5">
+      <circle cx="178" cy="228" r="2.5" fill="#7350ff" opacity="0.5">
         <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" begin="1.5s" repeatCount="indefinite" />
       </circle>
 
-      {/* Microphone icon (voice input) */}
-      <rect x="50" y="290" width="80" height="32" rx="16" fill="white" stroke="#e5e7eb" strokeWidth="1" filter="url(#mrShadow)" />
-      <circle cx="72" cy="306" r="8" fill="#7350ff" opacity="0.1" />
-      <rect x="70" y="300" width="4" height="10" rx="2" fill="#7350ff" />
-      <path d="M67 306 Q67 312 74 312 Q81 312 81 306" stroke="#7350ff" strokeWidth="1.2" fill="none" />
-      <line x1="74" y1="312" x2="74" y2="315" stroke="#7350ff" strokeWidth="1.2" />
-      <text x="95" y="310" fill="#6b7280" fontSize="8">Voz</text>
+      {/* Microphone / voice input pill */}
+      <rect x="40" y="272" width="80" height="28" rx="14" fill="white" stroke="#e5e7eb" strokeWidth="1" filter="url(#mrShadow)" />
+      <circle cx="60" cy="286" r="7" fill="#7350ff" opacity="0.1" />
+      <rect x="58" y="281" width="3.5" height="9" rx="1.75" fill="#7350ff" />
+      <path d="M55 287 Q55 292 61.5 292 Q68 292 68 287" stroke="#7350ff" strokeWidth="1" fill="none" />
+      <line x1="61.5" y1="292" x2="61.5" y2="295" stroke="#7350ff" strokeWidth="1" />
+      <text x="78" y="289" fill="#6b7280" fontSize="7">Voz</text>
 
       {/* Decorative elements */}
-      <circle cx="465" cy="380" r="5" fill="#7350ff" opacity="0.1" />
-      <circle cx="5" cy="350" r="7" fill="#a855f7" opacity="0.1" />
-      <circle cx="470" cy="40" r="4" fill="#7350ff" opacity="0.15" />
+      <circle cx="470" cy="400" r="5" fill="#7350ff" opacity="0.1" />
+      <circle cx="3" cy="360" r="7" fill="#a855f7" opacity="0.1" />
+      <circle cx="472" cy="30" r="4" fill="#7350ff" opacity="0.15" />
     </svg>
   );
 }
