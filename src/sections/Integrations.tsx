@@ -12,7 +12,7 @@ const base = import.meta.env.BASE_URL;
 const integrations = [
   { name: 'Slack', icon: `${base}icon-1.png`, color: '#4A154B' },
   { name: 'Google Drive', icon: `${base}icon-2.png`, color: '#4285F4' },
-  { name: 'Zapier', icon: `${base}icon-3.png`, color: '#FF4A00' },
+  { name: 'SAP', icon: `${base}icon-3.png`, color: '#0070F2' },
   { name: 'Salesforce', icon: `${base}icon-4.png`, color: '#00A1E0' },
   { name: 'HubSpot', icon: `${base}icon-5.png`, color: '#FF7A59' },
   { name: 'Notion', icon: `${base}icon-6.png`, color: '#000000' },
@@ -46,16 +46,11 @@ export default function Integrations() {
       if (cards) {
         gsap.fromTo(
           cards,
-          { scale: 0, opacity: 0 },
+          { scale: 0.15, opacity: 1 },
           {
             scale: 1,
-            opacity: 1,
-            duration: 0.6,
-            stagger: {
-              each: 0.1,
-              from: 'center',
-            },
-            ease: 'back.out(1.7)',
+            duration: 1,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: gridRef.current,
               start: 'top 80%',
@@ -64,10 +59,10 @@ export default function Integrations() {
           }
         );
 
-        cards.forEach((card, index) => {
+        cards.forEach((card) => {
           gsap.to(card, {
-            y: Math.sin(index) * 10,
-            duration: 3 + index * 0.5,
+            y: 10,
+            duration: 3,
             repeat: -1,
             yoyo: true,
             ease: 'sine.inOut',
@@ -167,7 +162,7 @@ export default function Integrations() {
             >
               <img 
                 src={`${import.meta.env.BASE_URL}intervia-logo.png`}
-                alt="intervia.ai" 
+                alt="intervia ai" 
                 className="w-16 h-16 object-contain"
               />
               <div className="absolute inset-0 bg-[#7350ff] rounded-3xl animate-ping opacity-10" />
@@ -211,16 +206,6 @@ export default function Integrations() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <Button
-            size="lg"
-            className="bg-[#7350ff] hover:bg-[#5a3fd4] text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#7350ff]/30 group"
-          >
-            {t('intCta')}
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
       </div>
     </section>
   );

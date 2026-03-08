@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '@/context/LanguageContext';
+import { useContactDialog } from '@/context/ContactDialogContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,7 @@ export default function CTA() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
+  const { openContact } = useContactDialog();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -40,7 +42,7 @@ export default function CTA() {
       ref={sectionRef}
       className="py-24 bg-gradient-to-b from-white to-purple-50/50"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={contentRef}
           className="relative bg-gradient-to-br from-[#7350ff] to-[#5a3fd4] rounded-3xl p-12 sm:p-16 overflow-hidden"
@@ -78,6 +80,7 @@ export default function CTA() {
             <div className="reveal-item flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button
                 size="lg"
+                onClick={openContact}
                 className="bg-white text-[#7350ff] hover:bg-gray-100 px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl group"
               >
                 {t('ctaPrimary')}
@@ -86,7 +89,8 @@ export default function CTA() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full transition-all duration-300"
+                onClick={openContact}
+                className="border-2 border-white/30 bg-white/10 text-white hover:bg-white/20 px-8 py-6 text-lg rounded-full transition-all duration-300"
               >
                 {t('ctaSecondary')}
               </Button>

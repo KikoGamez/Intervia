@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import gsap from 'gsap';
 import { useLanguage } from '@/context/LanguageContext';
+import { useContactDialog } from '@/context/ContactDialogContext';
 import AIBrain3D from '@/components/AIBrain3D';
 
 export default function Hero() {
@@ -12,6 +13,7 @@ export default function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
+  const { openContact } = useContactDialog();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -125,6 +127,7 @@ export default function Hero() {
             <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
+                onClick={openContact}
                 className="bg-[#7350ff] hover:bg-[#5a3fd4] text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#7350ff]/30 group"
               >
                 {t('heroCtaPrimary')}
@@ -133,6 +136,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 variant="outline"
+                onClick={openContact}
                 className="border-2 border-gray-300 hover:border-[#7350ff] hover:text-[#7350ff] px-8 py-6 text-lg rounded-full transition-all duration-300"
               >
                 {t('heroCtaSecondary')}

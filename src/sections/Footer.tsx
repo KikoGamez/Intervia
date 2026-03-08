@@ -1,5 +1,15 @@
-import { Twitter, Linkedin, Github, Instagram } from 'lucide-react';
+import { Linkedin, Instagram } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+
+const base = import.meta.env.BASE_URL;
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -8,23 +18,15 @@ export default function Footer() {
     producto: [
       { label: t('footerFeatures'), href: '#features' },
       { label: t('navIntegrations'), href: '#integrations' },
-      { label: t('navPricing'), href: '#pricing' },
-      { label: t('footerTemplates'), href: '#' },
-      { label: 'API', href: '#' },
     ],
     recursos: [
-      { label: t('footerBlog'), href: '#' },
-      { label: t('footerHelp'), href: '#' },
-      { label: t('footerCommunity'), href: '#' },
-      { label: t('footerTutorials'), href: '#' },
-      { label: t('footerWebinars'), href: '#' },
+      { label: t('footerBlog'), href: `${base}blog.html` },
+      { label: t('footerHelp'), href: `${base}help.html` },
     ],
     conocenos: [
       { label: t('footerAbout'), href: '#' },
-      { label: t('footerCareers'), href: '#' },
-      { label: t('footerPress'), href: '#' },
+      { label: t('footerCareers'), href: `${base}careers.html` },
       { label: t('footerContact'), href: '#' },
-      { label: t('footerPartners'), href: '#' },
     ],
     legal: [
       { label: t('footerPrivacy'), href: '#' },
@@ -35,9 +37,8 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: XIcon, href: '#', label: 'X' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
     { icon: Instagram, href: '#', label: 'Instagram' },
   ];
 
@@ -48,10 +49,10 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-6">
-              <img 
+              <img
                 src={`${import.meta.env.BASE_URL}intervia-logo.png`}
-                alt="intervia.ai" 
-                className="h-10 w-auto"
+                alt="intervia ai"
+                className="h-[120px] w-auto brightness-0 invert"
               />
             </a>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
@@ -107,7 +108,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Conócenos */}
+          {/* Conocenos */}
           <div>
             <h4 className="font-semibold mb-4">{t('footerCompany')}</h4>
             <ul className="space-y-3">
@@ -147,7 +148,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} intervia.ai. {t('footerCopyright')}
+            &copy; {new Date().getFullYear()} intervia ai. {t('footerCopyright')}
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">

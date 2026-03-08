@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
+import { useContactDialog } from '@/context/ContactDialogContext';
 import LoginDialog from '@/components/LoginDialog';
 
 export default function Navigation() {
@@ -9,6 +10,7 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const { openContact } = useContactDialog();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +24,7 @@ export default function Navigation() {
     { label: t('navPlatform'), href: '#features' },
     { label: t('navSolutions'), href: '#solutions' },
     { label: t('navIntegrations'), href: '#integrations' },
-    { label: t('navPricing'), href: '#pricing' },
+    { label: t('navPricing'), href: '#', onClick: openContact },
   ];
 
   const toggleLanguage = () => {
@@ -43,7 +45,7 @@ export default function Navigation() {
           <a href="#" className="flex items-center gap-3 group">
             <img 
               src={`${import.meta.env.BASE_URL}intervia-logo.png`}
-              alt="intervia.ai" 
+              alt="intervia ai" 
               className="h-[120px] w-auto transform group-hover:scale-105 transition-transform duration-300"
             />
           </a>
@@ -53,8 +55,9 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <a
                 key={link.label as string}
-                href={link.href}
-                className={`text-sm font-medium transition-all duration-300 hover:text-[#7350ff] relative group ${
+                href={link.onClick ? undefined : link.href}
+                onClick={link.onClick ? (e) => { e.preventDefault(); link.onClick(); } : undefined}
+                className={`text-sm font-medium transition-all duration-300 hover:text-[#7350ff] relative group cursor-pointer ${
                   isScrolled ? 'text-gray-700' : 'text-gray-700'
                 }`}
               >
@@ -77,14 +80,10 @@ export default function Navigation() {
             </button>
 
             <Button
-              variant="ghost"
-              className="text-gray-700 hover:text-[#7350ff] hover:bg-[#7350ff]/10"
+              className="bg-[#7350ff] hover:bg-[#5a3fd4] text-white px-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#7350ff]/30"
               onClick={() => setIsLoginOpen(true)}
             >
               {t('navLogin')}
-            </Button>
-            <Button className="bg-[#7350ff] hover:bg-[#5a3fd4] text-white px-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#7350ff]/30">
-              {t('navSignup')}
             </Button>
           </div>
 
@@ -122,19 +121,16 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <a
                 key={link.label as string}
-                href={link.href}
-                className="block text-gray-700 hover:text-[#7350ff] font-medium py-2 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                href={link.onClick ? undefined : link.href}
+                className="block text-gray-700 hover:text-[#7350ff] font-medium py-2 transition-colors cursor-pointer"
+                onClick={() => { setIsMobileMenuOpen(false); if (link.onClick) link.onClick(); }}
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-4 border-t border-gray-100 space-y-3">
-              <Button variant="outline" className="w-full" onClick={() => { setIsMobileMenuOpen(false); setIsLoginOpen(true); }}>
+            <div className="pt-4 border-t border-gray-100">
+              <Button className="w-full bg-[#7350ff] hover:bg-[#5a3fd4] text-white" onClick={() => { setIsMobileMenuOpen(false); setIsLoginOpen(true); }}>
                 {t('navLogin')}
-              </Button>
-              <Button className="w-full bg-[#7350ff] hover:bg-[#5a3fd4] text-white">
-                {t('navSignup')}
               </Button>
             </div>
           </div>
