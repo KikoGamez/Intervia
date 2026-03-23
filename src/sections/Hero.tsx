@@ -96,9 +96,9 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative min-h-[80vh] lg:min-h-0 lg:grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left space-y-8">
+          <div className="text-center lg:text-left space-y-8 relative z-10">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#7350ff]/10 rounded-full border border-[#7350ff]/20">
               <Sparkles className="w-4 h-4 text-[#7350ff]" />
@@ -155,12 +155,12 @@ export default function Hero() {
           {/* 3D Image */}
           <div
             ref={imageRef}
-            className="relative flex items-center justify-center"
+            className="absolute inset-0 flex items-center justify-center opacity-20 lg:opacity-100 lg:relative lg:inset-auto"
             style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
           >
             <div className="absolute inset-0 bg-gradient-radial from-[#7350ff]/30 via-transparent to-transparent blur-2xl scale-150" />
             
-            <div className="relative z-10 w-full max-w-xl">
+            <div className="relative z-10 w-full max-w-[100vw] lg:max-w-xl">
               <AIBrain3D />
             </div>
           </div>
