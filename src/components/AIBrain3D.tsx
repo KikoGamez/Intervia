@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, OrbitControls, Html } from '@react-three/drei';
 import * as THREE from 'three';
@@ -252,6 +252,15 @@ function NeuralNetwork() {
 
 /* ── Main component ── */
 export default function AIBrain3D() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   return (
     <div className="w-full h-[500px] relative">
       {/* CSS animation for the form field fill effect */}
@@ -264,7 +273,7 @@ export default function AIBrain3D() {
       `}</style>
 
       <Canvas
-        camera={{ position: [0, 0, 7], fov: 45 }}
+        camera={{ position: [0, 0, isMobile ? 5 : 7], fov: 45 }}
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.5} />
@@ -273,10 +282,14 @@ export default function AIBrain3D() {
 
         <NeuralNetwork />
 
-        {/* Floating form cards around the brain */}
-        <FormCard position={[3.8, 1.2, 0]} rotation={[0, -0.3, 0.05]} delay={0} />
-        <FormCard position={[-3.8, -0.5, 0.5]} rotation={[0, 0.3, -0.05]} delay={1.2} />
-        <FormCard position={[3.2, -1.8, -0.5]} rotation={[0, -0.2, -0.03]} delay={2.4} />
+        {/* Floating form cards around the brain — hidden on mobile */}
+        {!isMobile && (
+          <>
+            <FormCard position={[3.8, 1.2, 0]} rotation={[0, -0.3, 0.05]} delay={0} />
+            <FormCard position={[-3.8, -0.5, 0.5]} rotation={[0, 0.3, -0.05]} delay={1.2} />
+            <FormCard position={[3.2, -1.8, -0.5]} rotation={[0, -0.2, -0.03]} delay={2.4} />
+          </>
+        )}
 
         <OrbitControls
           enableZoom={false}
