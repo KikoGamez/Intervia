@@ -155,12 +155,12 @@ export default function Hero() {
           {/* 3D Image */}
           <div
             ref={imageRef}
-            className="absolute inset-0 flex items-center justify-center opacity-20 lg:opacity-100 lg:relative lg:inset-auto"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-screen flex items-center justify-center opacity-20 lg:opacity-100 lg:relative lg:left-auto lg:top-auto lg:translate-x-0 lg:translate-y-0 lg:w-auto"
             style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
           >
             <div className="absolute inset-0 bg-gradient-radial from-[#7350ff]/30 via-transparent to-transparent blur-2xl scale-150" />
-            
-            <div className="relative z-10 w-full max-w-[100vw] lg:max-w-xl">
+
+            <div className="relative z-10 w-full lg:max-w-xl">
               <AIBrain3D />
             </div>
           </div>
